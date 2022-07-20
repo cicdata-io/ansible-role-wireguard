@@ -26,5 +26,5 @@
   vars:
     chdir: "/etc/wireguard/{{ item.username }}"
   changed_when: false
-  with_items: "{{ wireguard_users }}" 
+  with_items: "{{ wireguard_users }}"
   when: item.state != "absent"

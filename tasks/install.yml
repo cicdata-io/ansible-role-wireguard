@@ -15,7 +15,7 @@
   package: name=qrencode state=present
 
 - name: Create send mail scripts
-  file: 
+  file:
     path: "/tmp/sendmail.sh"
     state: touch
     mode: 0777
@@ -45,7 +45,6 @@
         echo "content-transfer-encoding: base64"
         echo
         openssl base64 < /etc/wireguard/$username/clientconf.png ) | sendmail -f {{ mail_from }} $mailto
-        
 
 - name: Update sysctl setting
   sysctl:
