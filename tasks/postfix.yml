@@ -1,6 +1,6 @@
 ---
 - name: Config postfix
-  shell: postconf -e "relayhost = [email-smtp.us-west-2.amazonaws.com]:587" \
+  shell: postconf -e "relayhost = [email-smtp.ap-southeast-1.amazonaws.com]:587" \
     "smtp_sasl_auth_enable = yes" \
     "smtp_sasl_security_options = noanonymous" \
     "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" \
@@ -18,7 +18,7 @@
   ansible.builtin.lineinfile:
     path: /etc/postfix/sasl_passwd
     line: |
-      [email-smtp.us-west-2.amazonaws.com]:587 {{ smtp_user }}:{{ smtp_pass }}
+      [email-smtp.ap-southeast-1.amazonaws.com]:587 {{ smtp_user }}:{{ smtp_pass }}
 
 - name: Create a hashmap database file with SMTP credentials
   command: postmap hash:/etc/postfix/sasl_passwd
